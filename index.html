@@ -1,10 +1,13 @@
 <script>
-	const lang = (navigator.language || navigator.userLanguage) == "tr" ? 1 : 0;
-	const brave_warning = ["Please do not use Yuribot with Brave Browser. Brave Browser can modify image R,G,B values which can result to Yuribot skipping pixels. Yuribot is compatible with Firefox, Edge and Chrome browsers.",
-                  "Lütfen Brave Browser kullanma. Brave Browser resminin R,G,B değerlerini değiştirir, bu da botun bazı pixelleri atlamasına neden olabilir. Yuribotu Firefox, Edge ve Chrome tarayıcılarıyla kullanabilirsin."][lang];
-	if ((navigator.brave && await navigator.brave.isBrave() || false)) {
-    		alert(brave_warning)
-	}
+const lang = ((navigator.language || navigator.userLanguage) === "tr"? 1 : 0);
+const brave_warning = ["Please do not use Yuribot with Brave Browser. Brave Browser can modify image R,G,B values which can result to Yuribot skipping pixels. Yuribot is compatible with Firefox, Edge and Chrome browsers.",
+"Lütfen Brave Browser kullanma. Brave Browser resminin R,G,B değerlerini değiştirir, bu da botun bazı pixelleri atlamasına neden olabilir. Yuribotu Firefox, Edge ve Chrome tarayıcılarıyla kullanabilirsin."];
+async function checkBrave() {
+ if (navigator.brave && await navigator.brave.isBrave()) {
+     alert(brave_warning[lang]);
+ }
+}
+checkBrave();
 </script>
 <h1>
 Yuribot Image Converter
